@@ -20,8 +20,8 @@ RSpec.shared_examples 'lavender hearts' do
 end
 
 RSpec.shared_examples 'spending over £60 and more than 1 lavender heart' do
-  context 'when buying 2 or more lavender hearts' do
-    it 'has price which drops to £8.50' do
+  context 'when spending over £60 and buying 2 or more lavender hearts' do
+    it 'has gets 10% off and lavender price drops to £8.50' do
       @co.scan(personalised_cufflinks)
       @co.scan(personalised_cufflinks)
       @co.scan(lavender_heart)
