@@ -5,7 +5,7 @@ describe Checkout do
   include_context :testing_data
 
   before(:each) do
-    @co = Checkout.new(PromotionalRules)
+    @co = Checkout.new(nil)
   end
 
   describe '#scan' do

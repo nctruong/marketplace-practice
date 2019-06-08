@@ -1,4 +1,4 @@
-RSpec.shared_example 'spending over £60' do
+RSpec.shared_examples 'spending over £60' do
   context 'when spending over £60' do
     it 'gets 10% off of the purchase' do
       @co.scan(personalised_cufflinks)
@@ -9,7 +9,7 @@ RSpec.shared_example 'spending over £60' do
   end
 end
 
-RSpec.shared_example 'lavender hearts' do
+RSpec.shared_examples 'lavender hearts' do
   context 'when buying 2 or more lavender hearts' do
     it 'has price which drops to £8.50' do
       @co.scan(lavender_heart)
