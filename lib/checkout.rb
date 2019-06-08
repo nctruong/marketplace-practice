@@ -18,18 +18,25 @@ class Checkout
 
   def adding_item(item)
     @items << item
-    update_total(item)
-    update_discount
+    reset_total
+    reset_discount
   end
 
-  def update_total(item)
-    @total += item[:price]
+  def reset_total
+    @total = items.collect { |i| i[:price] }.inject(:+)
   end
 
-  def update_discount
+  def reset_discount
     # If you spend over £60, then you get 10% off of your purchase
-    @discount = total * 0.1 if total > 60
+    @discount = discount_10_per_if_over_60
+    @discount += more_than_2_lavender_hearts_discount
+  end
 
+  def discount_10_per_if_over_60
+    total > 60 ? total * 0.1 : 0
+  end
+
+  def more_than_2_lavender_hearts_discount
     # If you buy 2 or more lavender hearts then the price drops to £8.50
     count_lavenders = 0
     lavender_discount = 0
@@ -39,7 +46,7 @@ class Checkout
         count_lavenders += 1
       end
     end
-    @discount += lavender_discount if count_lavenders > 1
+    count_lavenders > 1 ? lavender_discount : 0
   end
 
   def total_after_discount
