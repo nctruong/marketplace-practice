@@ -18,3 +18,17 @@ RSpec.shared_examples 'lavender hearts' do
     end
   end
 end
+
+RSpec.shared_examples 'spending over £60 and more than 1 lavender heart' do
+  context 'when buying 2 or more lavender hearts' do
+    it 'has price which drops to £8.50' do
+      @co.scan(personalised_cufflinks)
+      @co.scan(personalised_cufflinks)
+      @co.scan(lavender_heart)
+      @co.scan(lavender_heart)
+      total = personalised_cufflinks[:price] * 2 + lavender_heart[:price] * 2
+      discount = total * 0.1 + (lavender_heart[:price] - 8.50) * 2
+      expect(@co.total).to eq(total - discount)
+    end
+  end
+end
