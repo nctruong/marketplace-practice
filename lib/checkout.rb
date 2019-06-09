@@ -10,6 +10,7 @@ class Checkout
   end
 
   def scan(item)
+    @discount = promotional_rules.new(@items).discount
     adding_item(item)
     @total = total_after_discount
   end

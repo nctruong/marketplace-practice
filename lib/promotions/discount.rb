@@ -1,11 +1,13 @@
 module Promotions
   module Discount
     class << self
+      # If you spend over £60, then you get 10% off of your purchase.
       def discount_10_percent_if_over_60(items)
         total = calc_total(items)
         total > 60 ? total * 0.1 : 0
       end
 
+      # If you buy 2 or more lavender hearts then the price drops to £8.50.
       def more_than_2_lavender_hearts_discount(items)
         count_lavenders = 0
         lavender_discount = 0
