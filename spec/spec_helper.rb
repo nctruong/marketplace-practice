@@ -1,5 +1,5 @@
 require 'byebug'
-Dir["./lib/*.rb"].each { |f| require f }
+Dir["./lib/**/*.rb"].each { |f| require f }
 Dir["./spec/support/**/*.rb"].each { |f| require f }
 
-# require_relative './promotions'
+require_relative './promotions/discount_spec'

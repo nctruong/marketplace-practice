@@ -13,3 +13,5 @@ module Promotions
     end
   end
 end
+
+include Promotions::ExpectedOutput
