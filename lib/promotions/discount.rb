@@ -23,10 +23,6 @@ module Promotions
       def calc_total(items)
         items.sum { |i| i.price }
       end
-
-      def ten_percentage(items)
-        calc_total(items) * 0.1
-      end
     end
   end
 end
