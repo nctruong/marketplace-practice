@@ -1,12 +1,12 @@
 RSpec.shared_context :testing_data do
   let(:lavender_heart) {
-    ProductItem.new('001', 'Lavender heart', 9.25)
+    ProductItem.new(code:'001', name:'Lavender heart', price:9.25)
   }
   let(:personalised_cufflinks) {
-    ProductItem.new('002', 'Personalised cufflinks', 45.00)
+    ProductItem.new(code:'002', name:'Personalised cufflinks', price:45.00)
   }
   let(:kids_t_shirt) {
-    ProductItem.new('003', 'Kids T-shirt', 19.95)
+    ProductItem.new(code:'003', name:'Kids T-shirt', price:19.95)
   }
   let(:two_lavender_hearts) {
     [ lavender_heart, lavender_heart ]

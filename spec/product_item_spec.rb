@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ProductItem, type: :model do
-  let(:item) { ProductItem.new('001', 'Lavender heart', 99.15) }
+  let(:item) { ProductItem.new(code:'001', name:'Lavender heart', price:99.15) }
   describe 'valid' do
     it 'is valid with code is present' do
       expect(item.code.nil?).to be(false)
@@ -27,15 +27,15 @@ describe ProductItem, type: :model do
 
   describe 'invalid' do
     it 'lacks code' do
-      expect(ProductItem.new(nil, 'Lavender', 100)).to raise('Code is mandatory')
+      expect{ ProductItem.new(name:'Lavender', price:100) }.to raise_error('Code is mandatory')
     end
     it 'is invalid due to data type for code'
     it 'lacks name' do
-      expect(ProductItem.new('001', nil, 100)).to raise('Name is mandatory')
+      expect{ ProductItem.new(code:'001', price:100) }.to raise_error('Name is mandatory')
     end
     it 'is invalid due to data type for name'
     it 'lacks price' do
-      expect(ProductItem.new('001', 'Lavender')).to raise('Price is mandatory')
+      expect{ ProductItem.new(code:'001', name:'Lavender') }.to raise_error('Price is mandatory')
     end
     it 'is invalid due to data type for price'
   end
