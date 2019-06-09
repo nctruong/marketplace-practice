@@ -21,5 +21,8 @@ class ProductItem
     [:code, :name, :price].each do |attr|
       raise "#{attr.capitalize} is mandatory" if params[attr].nil?
     end
+    raise "Code must be String" unless params[:code].is_a? String
+    raise "Name must be String" unless params[:name].is_a? String
+    raise "Price must be Numeric" unless params[:price].is_a? Numeric
   end
 end
