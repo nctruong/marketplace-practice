@@ -29,14 +29,20 @@ describe ProductItem, type: :model do
     it 'lacks code' do
       expect{ ProductItem.new(name:'Lavender', price:100) }.to raise_error('Code is mandatory')
     end
-    it 'is invalid due to data type for code'
+    it 'is invalid due to data type for code' do
+      expect{ ProductItem.new(code: 123, name:'Lavender', price:100) }.to raise_error('Code must be String')
+    end
     it 'lacks name' do
       expect{ ProductItem.new(code:'001', price:100) }.to raise_error('Name is mandatory')
     end
-    it 'is invalid due to data type for name'
+    it 'is invalid due to data type for name' do
+      expect{ ProductItem.new(code: '123', name: 123, price:100) }.to raise_error('Name must be String')
+    end
     it 'lacks price' do
       expect{ ProductItem.new(code:'001', name:'Lavender') }.to raise_error('Price is mandatory')
     end
-    it 'is invalid due to data type for price'
+    it 'is invalid due to data type for price' do
+      expect{ ProductItem.new(code: '123', name:'Lavender', price:'ninety') }.to raise_error('Price must be Numeric')
+    end
   end
 end
