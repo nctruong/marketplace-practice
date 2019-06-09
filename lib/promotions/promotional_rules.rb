@@ -1,13 +1,12 @@
 module Promotions
   class PromotionalRules
 
-    def initialize(items, discounts = [])
-      @items = items
+    def initialize(*discounts)
       @discounts = discounts
     end
 
-    def discount
-      @discounts.collect { |rule| rule.discount(@items) }.sum
+    def discount(items)
+      @discounts.collect { |rule| rule.discount(items) }.sum
     end
   end
 end
