@@ -23,7 +23,7 @@ class Checkout
   end
 
   def reset_total
-    @total = items.collect { |i| i[:price] }.inject(:+)
+    @total = items.collect { |i| i.price }.inject(:+)
   end
 
   def reset_discount
@@ -42,7 +42,7 @@ class Checkout
     lavender_discount = 0
     @items.each do |item|
       if item[:name].downcase == 'lavender heart'
-        lavender_discount += item[:price] - 8.50 if item[:price] > 8.50
+        lavender_discount += item.price - 8.50 if item.price > 8.50
         count_lavenders += 1
       end
     end

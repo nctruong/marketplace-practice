@@ -3,7 +3,7 @@ RSpec.shared_examples 'spending over £60' do
     it 'gets 10% off of the purchase' do
       @co.scan(personalised_cufflinks)
       @co.scan(personalised_cufflinks)
-      total = personalised_cufflinks[:price] * 2
+      total = personalised_cufflinks.price * 2
       expect(@co.total).to eq(total - total * 0.1)
     end
   end
@@ -26,8 +26,8 @@ RSpec.shared_examples 'spending over £60 and more than 1 lavender heart' do
       @co.scan(personalised_cufflinks)
       @co.scan(lavender_heart)
       @co.scan(lavender_heart)
-      total = personalised_cufflinks[:price] * 2 + lavender_heart[:price] * 2
-      discount = total * 0.1 + (lavender_heart[:price] - 8.50) * 2
+      total = personalised_cufflinks.price * 2 + lavender_heart.price * 2
+      discount = total * 0.1 + (lavender_heart.price - 8.50) * 2
       expect(@co.total).to eq(total - discount)
     end
   end
